@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../SandBox">
       <excludeFolder url="file://$MODULE_DIR$/../../SandBox/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../SandBox/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../SandBox/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
