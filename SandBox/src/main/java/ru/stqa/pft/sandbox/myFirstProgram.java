@@ -5,12 +5,11 @@ public class MyFirstProgram {
     hello("world");
     hello("All");
 
-    double len = 5;
-    System.out.println("площадь квадрата со стороной " + len + " = " + area(len));
+    Square square = new Square(5);
+    System.out.println("площадь квадрата со стороной " + square.l + " = " + square.area());
 
-    double a = 4;
-    double b = 6;
-    System.out.println("площать прямоугольника со сторонами " + a + " и " + b + " = " + area(a,b));
+    Rectangle rect = new Rectangle(4, 6);
+    System.out.println("площать прямоугольника со сторонами " + rect.a + " и " + rect.b + " = " + rect.area());
 
   }
 
@@ -18,11 +17,5 @@ public class MyFirstProgram {
     System.out.println("Hello, " + somebody);
   }
 
-  public static double area(double len){
-    return len*len;
-  }
 
-  public static double area(double a, double b){
-    return a*b;
-  }
 }
