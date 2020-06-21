@@ -2,7 +2,7 @@ package ru.stqa.pft.SandBox;
 
 public class Main {
   public static void main(String[] args) {
-    Point p1 = new Point(3, 5);
+    Point p1 = new Point(10, 5);
     Point p2 = new Point(7, 5);
     //System.out.println("расстояние между точками А и В = " + distance(p1, p2));
 
