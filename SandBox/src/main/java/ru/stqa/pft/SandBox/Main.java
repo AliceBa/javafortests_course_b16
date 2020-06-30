@@ -8,10 +8,11 @@ public class Main {
 
     System.out.print("расстояние между точкой А с координатами: " + p1.x + "," + p1.y);
     System.out.print(" и точкой В с координатами: " + p2.x + "," + p2.y);
-    //System.out.println(" = " + p1.distance(p2.x, p2.y));
-    System.out.println(" = " + p2.distance(p1.x, p1.y));
+    System.out.println(" = " + p1.distance(p2));
+    //System.out.println(" = " + p2.distance(p1));
   }
 
+  //не используется, т.к. есть метод в классе point
   public static double distance(Point p1, Point p2) {
 
     double d = Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
