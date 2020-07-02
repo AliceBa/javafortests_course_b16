@@ -11,11 +11,12 @@ public class TestBase {
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     app.init();
+    //пришли котики
   }
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
     app.stop();
+    //ушли котики
   }
-
 }
