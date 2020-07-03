@@ -25,4 +25,20 @@ public class ContactHelper extends BaseHelper{
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("email"), contactData.getEmail());
   }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void initContactModification() {
+    click(By.xpath("(//img[@alt='Edit'])[4]"));
+  }
+
+  public void submitContactModification() {
+    click(By.name("update"));
+  }
+
+  public void returnToHomePage() {
+    click(By.linkText("home page"));
+  }
 }
