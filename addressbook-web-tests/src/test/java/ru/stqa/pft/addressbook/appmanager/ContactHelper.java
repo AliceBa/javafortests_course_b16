@@ -39,6 +39,14 @@ public class ContactHelper extends BaseHelper{
   }
 
   public void returnToHomePage() {
-    click(By.linkText("home page"));
+    click(By.linkText("home page")); // там находится contact list
+  }
+
+  public void selectContactDetails() {
+    click(By.xpath("(//img[@alt='Details'])[2]"));
+  }
+
+  public void deleteContact() {
+    click(By.xpath("(//input[@name='update'])[3]"));
   }
 }
