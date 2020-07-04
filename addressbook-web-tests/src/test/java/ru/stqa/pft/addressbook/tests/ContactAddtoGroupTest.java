@@ -8,5 +8,6 @@ public class ContactAddtoGroupTest extends TestBase {
   public void testContactAddtoGroup(){
     app.getNavigationHelper().gotoHomePage();
     app.getContactHelper().selectContact();
+    app.getContactHelper().selectGroupforContact();
   }
 }

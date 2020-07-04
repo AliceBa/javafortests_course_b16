@@ -31,7 +31,7 @@ public class ContactHelper extends BaseHelper{
   }
 
   public void initContactModification() {
-    click(By.xpath("(//img[@alt='Edit'])[4]"));
+    click(By.xpath("(//img[@alt='Edit'])[1]"));
   }
 
   public void submitContactModification() {
@@ -47,6 +47,13 @@ public class ContactHelper extends BaseHelper{
   }
 
   public void deleteContact() {
-    click(By.xpath("(//input[@name='update'])[3]"));
+    click(By.xpath("//input[@value='Delete']"));
+    wd.switchTo().alert().accept();
+  }
+
+  public void selectGroupforContact() {
+    click(By.name("to_group"));
+    selectFromList(By.name("to_group"));
+    click(By.name("add"));
   }
 }
