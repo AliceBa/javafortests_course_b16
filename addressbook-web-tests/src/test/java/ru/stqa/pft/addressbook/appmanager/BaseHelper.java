@@ -23,22 +23,11 @@ public class BaseHelper {
     wd.findElement(locator).sendKeys(text);
   }
 
-  /*
-    driver.findElement(By.name("firstname")).click();
-    driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys("Petr");
-  */
-
   public void selectFromList(By locator) {
     click(locator);
     new Select(wd.findElement(locator)).selectByVisibleText("test1");
     click(locator);
   }
-  /*
-    driver.findElement(By.name("to_group")).click();
-    new Select(driver.findElement(By.name("to_group"))).selectByVisibleText("test4");
-    driver.findElement(By.name("to_group")).click();
-   */
 
   public boolean isElementPresent(By by) {
     try {
