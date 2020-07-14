@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactHelper extends BaseHelper{
+public class ContactHelper extends BaseHelper {
 
   private ContactData contactData;
   private boolean creation;
@@ -29,9 +29,9 @@ public class ContactHelper extends BaseHelper{
     type(By.name("company"), contactData.getCompany());
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("email"), contactData.getEmail());
-    if(creation){
+    if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    } else{
+    } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
@@ -65,5 +65,16 @@ public class ContactHelper extends BaseHelper{
     click(By.name("to_group"));
     selectFromList(By.name("to_group"));
     click(By.name("add"));
+  }
+
+  public void createContact(ContactData contact) {
+    selectAddNewContact();
+    fillContactForm(contact, true);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
