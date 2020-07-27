@@ -12,7 +12,7 @@ public class ContactAddtoGroupTest extends TestBase {
   public void testContactAddtoGroup(){
     app.getNavigationHelper().gotoHomePage();
     if (! app.getContactHelper().isThereContact()){
-      app.getContactHelper().createContact(new ContactData("Alex", "Xander", "Factory", "89991112244", "xander.email", "test1"));
+      app.getContactHelper().createContact(new ContactData( "Alex", "Xander", "Factory", "89991112244", "xander.email", "test1"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size()-1);
