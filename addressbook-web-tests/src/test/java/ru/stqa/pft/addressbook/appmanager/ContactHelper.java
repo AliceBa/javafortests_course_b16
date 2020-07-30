@@ -44,8 +44,9 @@ public class ContactHelper extends BaseHelper {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void initContactModification() {
-    click(By.xpath("(//img[@alt='Edit'])[1]"));
+  public void initContactModification(int index) {
+    wd.findElements(By.xpath(".//td[8]")).get(index).click();
+    //wd.findElements(By.name("Edit")).get(index).click();
   }
 
   public void submitContactModification() {
@@ -85,7 +86,6 @@ public class ContactHelper extends BaseHelper {
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
-//*[@id="maintable"]/tbody/tr[3]/td[2]
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
