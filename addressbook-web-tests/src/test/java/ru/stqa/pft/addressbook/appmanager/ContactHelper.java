@@ -46,7 +46,7 @@ public class ContactHelper extends BaseHelper {
 
   public void initContactModification(int index) {
     wd.findElements(By.xpath(".//td[8]")).get(index).click();
-    //wd.findElements(By.name("Edit")).get(index).click();
+    //wd.findElements(By.xpath("(//img[@alt='Edit'])")).get(index).click();
   }
 
   public void submitContactModification() {
@@ -105,8 +105,8 @@ public class ContactHelper extends BaseHelper {
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements){
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      String firstname = element.findElement(By.xpath(".//td[2]")).getText();
-      String lastname = element.findElement(By.xpath(".//td[3]")).getText();
+      String lastname = element.findElement(By.xpath(".//td[2]")).getText();
+      String firstname = element.findElement(By.xpath(".//td[3]")).getText();
       ContactData contact = new ContactData().withId(id).withLastname(lastname).withFirstname(firstname);
       contacts.add(contact);
     }
