@@ -8,7 +8,9 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends BaseHelper {
 
@@ -44,6 +46,10 @@ public class ContactHelper extends BaseHelper {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  private void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
+  }
+
   public void initContactModification(int index) {
     wd.findElements(By.xpath(".//td[8]")).get(index).click();
     //wd.findElements(By.xpath("(//img[@alt='Edit'])")).get(index).click();
@@ -54,7 +60,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void returnToHomePage() {
-    click(By.linkText("home page")); // там находится contact list
+    click(By.linkText("home")); // там находится contact list
   }
 
   public void selectContactDetails() {
@@ -79,8 +85,9 @@ public class ContactHelper extends BaseHelper {
     returnToHomePage();
   }
 
-  public void modify(int index, ContactData contact) {
-    initContactModification(index);
+  public void modify(ContactData contact) {
+    initContactModification(contact.getId());
+    selectContactById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     returnToHomePage();
@@ -88,6 +95,12 @@ public class ContactHelper extends BaseHelper {
 
   public void delete(int index) {
     selectContact(index);
+    deleteContact();
+    returnToHomePage();
+  }
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
     deleteContact();
     returnToHomePage();
   }
@@ -107,9 +120,21 @@ public class ContactHelper extends BaseHelper {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String lastname = element.findElement(By.xpath(".//td[2]")).getText();
       String firstname = element.findElement(By.xpath(".//td[3]")).getText();
-      ContactData contact = new ContactData().withId(id).withLastname(lastname).withFirstname(firstname);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname));
     }
     return contacts;
   }
+
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
+    for (WebElement element : elements){
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = element.findElement(By.xpath(".//td[2]")).getText();
+      String firstname = element.findElement(By.xpath(".//td[3]")).getText();
+      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname));
+    }
+    return contacts;
+  }
+
 }
